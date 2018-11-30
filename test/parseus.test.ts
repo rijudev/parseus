@@ -1,7 +1,5 @@
-// import DummyClass from '../src/parseus'
 import 'reflect-metadata'
 
-// import { Parseus } from '../src/repository/repository'
 import Parseus, { Field } from '../src/parseus'
 
 test('Test', () => {
@@ -23,7 +21,5 @@ test('Test', () => {
     patientNum: string
   }
 
-  // tslint:disable-next-line:no-unused-expression
-  // const jsonPatient = Parseus.toJSON(patient)
   const patient = Parseus.fromJSON({}).to(Patient)
 })
