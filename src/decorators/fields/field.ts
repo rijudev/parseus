@@ -27,21 +27,3 @@ export function Field(options?: IFieldOptions): Function {
     )
   }
 }
-
-export class Patient {
-  @Field({
-    isVirtual: true,
-    type: 'unique'
-  })
-  key: string
-
-  @Field({
-    name: 'patient_id'
-  })
-  id: number
-
-  @Field({
-    name: 'patient_patient_num'
-  })
-  patientNum: string
-}
