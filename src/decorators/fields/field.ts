@@ -1,4 +1,5 @@
 import { IFieldOptions, FieldType } from '../options/field-options'
+import { PARSEUS_META_KEY } from '../../helpers/constant'
 
 export function Field(options?: IFieldOptions): Function {
   return function(context: Object, propertyName: string, descriptor: TypedPropertyDescriptor<any>) {
@@ -16,9 +17,9 @@ export function Field(options?: IFieldOptions): Function {
       opts.name = propertyName
     }
 
-    const previousMetadata = Reflect.getMetadata('design:parseus-field', context)
+    const previousMetadata = Reflect.getMetadata(PARSEUS_META_KEY, context)
     Reflect.defineMetadata(
-      'design:parseus-field',
+      PARSEUS_META_KEY,
       {
         ...previousMetadata,
         [propertyName]: opts

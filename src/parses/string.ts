@@ -10,7 +10,8 @@ export class StringParse<T> extends Parse<T> {
     return ['string', 'unique', 'combine']
   }
 
-  parse(data: object): void {
+  parse(data: object): T {
     console.log(data)
+    return this.model
   }
 }

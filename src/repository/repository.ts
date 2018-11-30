@@ -1,3 +1,7 @@
+import { PARSEUS_META_KEY } from '../helpers/constant'
+import { parseFactory } from '../parses'
+import { Parse } from '../utils'
+
 export interface IParameterlessConstructor<T> {
   new (): T
 }
@@ -13,7 +17,7 @@ class ParseusJSON {
 
   to<T>(model: IParameterlessConstructor<T>): T {
     const obj = new model()
-    // console.log(Reflect.getMetadata('design:parseus-field', obj))
-    return obj
+    const metadata = Reflect.getMetadata(PARSEUS_META_KEY, obj)
+    return parseFactory(obj, metadata, this.json)
   }
 }

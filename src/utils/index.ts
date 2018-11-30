@@ -30,7 +30,7 @@ export abstract class Parse<T> {
   }
 
   abstract getFieldTypes(): Array<FieldType>
-  abstract parse(data: object): void
+  abstract parse(data: object): T
 }
 
 export interface IFieldParse {
