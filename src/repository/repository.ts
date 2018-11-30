@@ -1,14 +1,17 @@
 import { PARSEUS_META_KEY } from '../helpers/constant'
 import { parseFactory } from '../parses'
-import { Parse } from '../utils'
 
 export interface IParameterlessConstructor<T> {
   new (): T
 }
 
 export class Parseus {
-  static fromJSON(json: object) {
+  static from(json: object): ParseusJSON {
     return new ParseusJSON(json)
+  }
+
+  static toJSON<T>(obj: T): object {
+    return {}
   }
 }
 
