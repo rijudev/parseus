@@ -1,13 +1,20 @@
 import { IFieldParse } from '../utils'
 import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 
-export type ParseFunction = {
-  [type in FieldType]?: (key: string, value: any, options: IFieldOptions, data: any) => void
+export interface IParseFunction {
+  key: string
+  value: any
+  options: IFieldOptions
+  data: any
+  destination: any
+  toJSON?: boolean
 }
+
+export type ParseFunction = { [type in FieldType]?: (options: IParseFunction) => void }
 
 export abstract class Parse<T> {
   protected fields: IFieldParse
-  protected model: any
+  private model: any
 
   constructor(protected objectClass: T, protected metadata: IFieldParse) {
     this.model = objectClass
@@ -36,9 +43,36 @@ export abstract class Parse<T> {
     }
   }
 
+  marshal(obj: object): object {
+    Object.keys(this.fields).forEach(key => {
+      const options = { ...this.fields[key] }
+      if (options.transformer) {
+        // TODO: Here Transformer
+        // field.transformer.to(data)
+        return
+      }
+
+      const value: any = this.model[key]
+      if (!value || options.isVirtual) return
+
+      const fieldFunc = this.getFieldTypes()[options.type!]
+      if (!fieldFunc) return
+      fieldFunc({
+        value,
+        options,
+        key: options.name!,
+        data: this.model,
+        destination: obj,
+        toJSON: true
+      })
+    })
+
+    return obj
+  }
+
   parse(data: object): T {
     Object.keys(this.fields).forEach(key => {
-      const options = this.fields[key]
+      const options = { ...this.fields[key] }
       if (options.transformer) {
         // TODO: Here Transformer
         // field.transformer.to(data)
@@ -50,7 +84,7 @@ export abstract class Parse<T> {
 
       const fieldFunc = this.getFieldTypes()[options.type!]
       if (!fieldFunc) return
-      fieldFunc(key, value, options, data)
+      fieldFunc({ key, value, options, data, destination: this.model })
     })
     return this.model
   }

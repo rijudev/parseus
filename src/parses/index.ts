@@ -20,3 +20,8 @@ function getParseArray<T>(model: T, metadata: IFieldParse) {
 export function parseFactory<T>(model: T, metadata: IFieldParse, data: object): T {
   return getParseArray(model, metadata).reduce<T>((_, parser) => parser.parse(data), model)
 }
+
+export function mashallFactory<T>(model: T, metadata: IFieldParse): object {
+  const obj = {}
+  return getParseArray(model, metadata).reduce((_, parser) => parser.marshal(obj), obj)
+}

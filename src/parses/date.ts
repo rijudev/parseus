@@ -1,10 +1,9 @@
 import { IFieldParse } from '../utils'
-import { Parse, ParseFunction } from './parse'
+import { Parse, ParseFunction, IParseFunction } from './parse'
 
 export class DateParse<T> extends Parse<T> {
   constructor(model: T, metadata: IFieldParse) {
     super(model, metadata)
-    this.parseDate = this.parseDate.bind(this)
   }
 
   protected getFieldTypes(): ParseFunction {
@@ -13,7 +12,7 @@ export class DateParse<T> extends Parse<T> {
     }
   }
 
-  private parseDate(key: string, value: any) {
-    this.model[key] = new Date(value)
+  private parseDate({ key, value, destination }: IParseFunction) {
+    destination[key] = new Date(value)
   }
 }

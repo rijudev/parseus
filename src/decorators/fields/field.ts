@@ -37,12 +37,13 @@ export function Field(options?: IFieldOptions): Function {
     }
 
     if (opts.readOnly) {
+      const readOnlyPropertyname = '_' + propertyName
       const getter = () => {
-        return context['_' + propertyName]
+        return context[readOnlyPropertyname]
       }
       const setter = (newValue: any) => {
-        if (context['_' + propertyName]) return
-        context['_' + propertyName] = newValue
+        if (context[readOnlyPropertyname]) return
+        context[readOnlyPropertyname] = newValue
       }
 
       // Delete property.

@@ -1,6 +1,10 @@
 import { PARSEUS_META_KEY } from '../helpers/constant'
-import { parseFactory } from '../parses'
-import { IParameterlessConstructor } from '../utils'
+import { parseFactory, mashallFactory } from '../parses'
+import { IParameterlessConstructor, IFieldParse } from '../utils'
+
+function getMetadata<T>(obj: T): IFieldParse {
+  return Reflect.getMetadata(PARSEUS_META_KEY, obj)
+}
 
 export class Parseus {
   static from(json: object): ParseusJSON {
@@ -8,7 +12,8 @@ export class Parseus {
   }
 
   static toJSON<T>(obj: T): object {
-    return {}
+    const metadata = getMetadata(obj)
+    return mashallFactory(obj, metadata)
   }
 }
 
@@ -17,7 +22,7 @@ class ParseusJSON {
 
   to<T>(model: IParameterlessConstructor<T>): T {
     const obj = new model()
-    const metadata = Reflect.getMetadata(PARSEUS_META_KEY, obj)
+    const metadata = getMetadata(obj)
     return parseFactory(obj, metadata, this.json)
   }
 }

@@ -59,7 +59,7 @@ class Patient {
   decimalValue: number
 }
 
-describe('Field Decorator', async () => {
+describe('Field Decorator', () => {
   const jsonObj = {
     patient_id: '1',
     patient_patient_num: 'TEST01',
@@ -77,16 +77,17 @@ describe('Field Decorator', async () => {
       patient_eligibility_list_group_id: 1
     }
   }
-  const startDate = new Date().getMilliseconds()
+  let startDate = new Date().getMilliseconds()
   const patient = Parseus.from(jsonObj).to(Patient)
-  const endDate = new Date().getMilliseconds()
+  let endDate = new Date().getMilliseconds()
+  console.log(patient)
+  console.log(`Object unmarshalled in ${endDate - startDate} ms`)
 
-  console.log(`Object parsed in ${endDate - startDate} ms`)
-
-  const aStartDate = new Date().getMilliseconds()
-  const aPatient = await Parseus.from(jsonObj).asyncTo(Patient)
-  const aEndDate = new Date().getMilliseconds()
-  console.log(`Object parsed in ${aEndDate - aStartDate} ms`)
+  startDate = new Date().getMilliseconds()
+  const jsonPat = Parseus.toJSON(patient)
+  endDate = new Date().getMilliseconds()
+  console.log(jsonPat)
+  console.log(`Object marshalled in ${endDate - startDate} ms`)
 
   test('should convert string number to number', () => {
     expect(typeof patient.id).toBe('number')
