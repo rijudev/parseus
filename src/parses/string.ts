@@ -2,15 +2,21 @@ import { v1 } from 'uuid'
 
 import { IFieldParse } from '../utils'
 import { FieldType, IFieldOptions } from '../decorators/options/field-options'
-import { Parse } from './parse'
+import { Parse, ParseFunction } from './parse'
 
 export class StringParse<T> extends Parse<T> {
   constructor(model: T, metadata: IFieldParse) {
     super(model, metadata)
+    this.parseString = this.parseString.bind(this)
+    this.parseUnique = this.parseUnique.bind(this)
   }
 
-  protected getFieldTypes(): Array<FieldType> {
-    return ['string', 'unique', 'combine']
+  protected getFieldTypes(): ParseFunction {
+    return {
+      string: this.parseString,
+      unique: this.parseUnique,
+      combine: undefined
+    }
   }
 
   private parseUnique(key: string) {
@@ -29,18 +35,5 @@ export class StringParse<T> extends Parse<T> {
     }
 
     this.model[key] = `${value}`
-  }
-
-  protected parseKey(key: string, option: IFieldOptions, data: any): void {
-    if (option.type === 'unique') {
-      this.parseUnique(key)
-      return
-    }
-
-    const value: any = data[option.name!]
-    if (option.type === 'string') {
-      this.parseString(key, value)
-      return
-    }
   }
 }

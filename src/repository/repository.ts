@@ -1,9 +1,6 @@
 import { PARSEUS_META_KEY } from '../helpers/constant'
 import { parseFactory } from '../parses'
-
-export interface IParameterlessConstructor<T> {
-  new (): T
-}
+import { IParameterlessConstructor } from '../utils'
 
 export class Parseus {
   static from(json: object): ParseusJSON {

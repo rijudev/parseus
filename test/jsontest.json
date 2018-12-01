@@ -1,0 +1,287 @@
+{
+  "patient_id": 2913268,
+  "patient_patient_num": "TEST01",
+  "patient_person_code": "002",
+  "patient_family_id": 2695932,
+  "patient_old_patient_num": "TEST",
+  "patient_first_name": "RICHARD",
+  "patient_last_name": "SANDOVAL",
+  "patient_middle_name": "TESTT",
+  "patient_prefix": "TEST",
+  "patient_suffix": "TEST",
+  "patient_date_of_birth": "2093-09-15T00:00:00Z",
+  "patient_gender": "M",
+  "patient_relationship_code": "0",
+  "patient_ssn": "111111111",
+  "patient_language_code": "ES",
+  "patient_opt_test_only": true,
+  "patient_patient_link_date": "2018-09-17T00:00:00Z",
+  "patient_mod_start_date": "2018-11-19T18:49:26.70293Z",
+  "patient_mod_user": 10031,
+  "patient_processing_tag": "TEST",
+  "patient_patient_lockout_list": [
+    {
+      "patient_lockout_list_item_id": 1286,
+      "patient_lockout_list_parent_id": 2913268,
+      "patient_lockout_list_type": "D",
+      "patient_lockout_list_inc_type": "E",
+      "patient_lockout_list_prescriber_id": 1,
+      "patient_lockout_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_lockout_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_lockout_list_updated_at": "2018-08-31T20:57:16.681669Z",
+      "patient_lockout_list_updated_by": 10031,
+      "patient_lockout_list_prescriber_npi": "1111111111",
+      "patient_lockout_list_updated_by_user_name": "RSANDO"
+    }
+  ],
+  "patient_patient_location_list": [
+    {
+      "patient_location_list_item_id": 1577458,
+      "patient_location_list_parent_id": 2913268,
+      "patient_location_list_location_id": 100750,
+      "patient_location_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_location_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_location_list_updated_at": "2018-09-11T13:04:52.499434Z",
+      "patient_location_list_updated_by": 10031,
+      "patient_location_list_groups_location_location_code": "TEST",
+      "patient_location_list_updated_by_user_name": "RSANDO"
+    }
+  ],
+  "patient_patient_eligibility_list": [
+    {
+      "patient_eligibility_list_item_id": 10633748,
+      "patient_eligibility_list_parent_id": 2913268,
+      "patient_eligibility_list_group_id": 42,
+      "patient_eligibility_list_coverage_type": "FAM",
+      "patient_eligibility_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_eligibility_list_end_date": "2018-09-17T00:00:00Z",
+      "patient_eligibility_list_updated_at": "2018-09-18T15:02:41.908852Z",
+      "patient_eligibility_list_updated_by": 1,
+      "patient_eligibility_list_groups_group_num": "0000",
+      "patient_eligibility_list_groups_group_name": "SCRIPT CARE LTD",
+      "patient_eligibility_list_groups_group_type": "00",
+      "patient_eligibility_list_updated_by_user_name": "SYSTEM"
+    }
+  ],
+  "patient_patient_benefit_adjustment_list": [
+    {
+      "patient_benefit_adjustment_list_item_id": 2327523,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 12,
+      "patient_benefit_adjustment_list_reason": "32",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:33:35.574812Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327522,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 12,
+      "patient_benefit_adjustment_list_reason": "21",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:33:19.142085Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327521,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_total_benefit_amount": 1,
+      "patient_benefit_adjustment_list_reason": "111212",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:28:27.73548Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327520,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_out_of_pocket_amount": 1,
+      "patient_benefit_adjustment_list_reason": "12",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:28:05.002119Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327519,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 1,
+      "patient_benefit_adjustment_list_reason": "12",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:26:25.085677Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327518,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 1,
+      "patient_benefit_adjustment_list_reason": "123",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:25:16.488827Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327517,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_copay_bank_amount": 1,
+      "patient_benefit_adjustment_list_reason": "123",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:16:38.690104Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327516,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 2,
+      "patient_benefit_adjustment_list_reason": "12",
+      "patient_benefit_adjustment_list_effective_date": "2012-12-12T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:12:35.252038Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327515,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 1,
+      "patient_benefit_adjustment_list_reason": "12",
+      "patient_benefit_adjustment_list_effective_date": "2022-11-21T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:10:33.834625Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327514,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_total_benefit_amount": 1,
+      "patient_benefit_adjustment_list_deductible_amount": 1,
+      "patient_benefit_adjustment_list_reason": "123",
+      "patient_benefit_adjustment_list_effective_date": "2018-09-19T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:08:04.792069Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327513,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_deductible_amount": 1,
+      "patient_benefit_adjustment_list_reason": "IDK3",
+      "patient_benefit_adjustment_list_effective_date": "2018-09-25T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T18:04:25.550968Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327512,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_total_benefit_amount": 1,
+      "patient_benefit_adjustment_list_reason": "IDK2",
+      "patient_benefit_adjustment_list_effective_date": "2018-09-18T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T17:48:06.580079Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    },
+    {
+      "patient_benefit_adjustment_list_item_id": 2327511,
+      "patient_benefit_adjustment_list_parent_id": 2913268,
+      "patient_benefit_adjustment_list_total_benefit_amount": 1,
+      "patient_benefit_adjustment_list_reason": "IDK",
+      "patient_benefit_adjustment_list_effective_date": "2018-09-25T00:00:00Z",
+      "patient_benefit_adjustment_list_updated_at": "2018-09-03T17:46:14.608981Z",
+      "patient_benefit_adjustment_list_updated_by": 10031,
+      "patient_benefit_adjustment_list_updated_by_user_name": "RSANDO"
+    }
+  ],
+  "patient_patient_workers_comp_claim_list": [
+    {
+      "patient_workers_comp_claim_list_item_id": 2,
+      "patient_workers_comp_claim_list_parent_id": 2913268,
+      "patient_workers_comp_claim_list_date_of_injury": "2018-09-05T00:00:00Z",
+      "patient_workers_comp_claim_list_termination_date": "2100-12-31T00:00:00Z",
+      "patient_workers_comp_claim_list_claim_number": "TEST02",
+      "patient_workers_comp_claim_list_updated_at": "2018-09-05T17:11:18.510263Z",
+      "patient_workers_comp_claim_list_updated_by": 10031,
+      "patient_workers_comp_claim_list_effective_date": "1990-01-01T00:00:00Z",
+      "patient_workers_comp_claim_list_patient_injury": []
+    },
+    {
+      "patient_workers_comp_claim_list_item_id": 1,
+      "patient_workers_comp_claim_list_parent_id": 2913268,
+      "patient_workers_comp_claim_list_date_of_injury": "2018-09-05T00:00:00Z",
+      "patient_workers_comp_claim_list_termination_date": "2100-12-31T00:00:00Z",
+      "patient_workers_comp_claim_list_claim_number": "TEST01",
+      "patient_workers_comp_claim_list_venue": "AK",
+      "patient_workers_comp_claim_list_adjuster_name": "123",
+      "patient_workers_comp_claim_list_updated_at": "2018-09-27T15:29:14.709044Z",
+      "patient_workers_comp_claim_list_updated_by": 10031,
+      "patient_workers_comp_claim_list_effective_date": "1990-01-01T00:00:00Z",
+      "patient_workers_comp_claim_list_patient_injury": []
+    }
+  ],
+  "patient_patient_sub_plan_list": [
+    {
+      "patient_sub_plan_list_item_id": 1,
+      "patient_sub_plan_list_parent_id": 2913268,
+      "patient_sub_plan_list_sub_plan_id": 1,
+      "patient_sub_plan_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_sub_plan_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_sub_plan_list_updated_at": "2018-08-31T21:02:54.413659Z",
+      "patient_sub_plan_list_updated_by": 10031,
+      "patient_sub_plan_list_groups_sub_plan_sub_plan_name": "TEST",
+      "patient_sub_plan_list_updated_by_user_name": "RSANDO"
+    }
+  ],
+  "patient_patient_program_code_list": [
+    {
+      "patient_program_code_list_item_id": 1,
+      "patient_program_code_list_parent_id": 2913268,
+      "patient_program_code_list_program_code": "02",
+      "patient_program_code_list_start_date": "1989-12-09T00:00:00Z",
+      "patient_program_code_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_program_code_list_updated_at": "2018-08-30T21:28:14.969782Z",
+      "patient_program_code_list_updated_by": 10031
+    },
+    {
+      "patient_program_code_list_item_id": 4,
+      "patient_program_code_list_parent_id": 2913268,
+      "patient_program_code_list_program_code": "03",
+      "patient_program_code_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_program_code_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_program_code_list_updated_at": "2018-08-31T20:47:29.68552Z",
+      "patient_program_code_list_updated_by": 10031
+    }
+  ],
+  "patient_patient_flex_tag_list": [
+    {
+      "patient_flex_tag_list_item_id": 25,
+      "patient_flex_tag_list_parent_id": 2913268,
+      "patient_flex_tag_list_flex_tag": "HELLO WO",
+      "patient_flex_tag_list_start_date": "2012-01-01T00:00:00Z",
+      "patient_flex_tag_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_flex_tag_list_updated_at": "2018-09-20T13:13:51.836673Z",
+      "patient_flex_tag_list_updated_by": 1
+    },
+    {
+      "patient_flex_tag_list_item_id": 24,
+      "patient_flex_tag_list_parent_id": 2913268,
+      "patient_flex_tag_list_flex_tag": "HELLO WO",
+      "patient_flex_tag_list_start_date": "2012-01-01T00:00:00Z",
+      "patient_flex_tag_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_flex_tag_list_updated_at": "2018-09-20T13:10:08.249936Z",
+      "patient_flex_tag_list_updated_by": 1
+    },
+    {
+      "patient_flex_tag_list_item_id": 1,
+      "patient_flex_tag_list_parent_id": 2913268,
+      "patient_flex_tag_list_flex_tag": "HELLO WO",
+      "patient_flex_tag_list_start_date": "1990-01-01T00:00:00Z",
+      "patient_flex_tag_list_end_date": "2100-12-31T00:00:00Z",
+      "patient_flex_tag_list_updated_at": "2018-09-03T16:14:17.372227Z",
+      "patient_flex_tag_list_updated_by": 10031
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { Transformer } from './transformer'
+import { IParameterlessConstructor } from '../../utils'
 
 export type FieldType =
   | 'string'
@@ -7,7 +8,7 @@ export type FieldType =
   | 'boolean'
   | 'unique'
   | 'date'
-  | 'date-time'
+  // | 'date-time'
   | 'combine'
   | 'array'
   | 'object'
@@ -47,6 +48,11 @@ export interface IFieldOptions {
   default?: any
 
   /**
+   * Indicates if field's value is ready only
+   */
+  readOnly?: boolean
+
+  /**
    * The precision for a decimal (exact numeric) field (applies only for decimal column), which is the maximum
    * number of digits that are stored for the values.
    */
@@ -57,4 +63,9 @@ export interface IFieldOptions {
    * this column when (un)marshal.
    */
   transformer?: Transformer
+
+  /**
+   * Indicate the field's constructor class of target
+   */
+  factory?: IParameterlessConstructor<object>
 }

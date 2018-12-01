@@ -1,14 +1,19 @@
-import { Parse } from './parse'
+import { Parse, ParseFunction } from './parse'
 import { IFieldParse } from '../utils'
 import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 
 export class NumberParse<T> extends Parse<T> {
   constructor(model: T, metadata: IFieldParse) {
     super(model, metadata)
+    this.parseDecimal = this.parseDecimal.bind(this)
+    this.parseNumber = this.parseNumber.bind(this)
   }
 
-  protected getFieldTypes(): Array<FieldType> {
-    return ['number', 'decimal']
+  protected getFieldTypes(): ParseFunction {
+    return {
+      number: this.parseNumber,
+      decimal: this.parseDecimal
+    }
   }
 
   private parseNumber(key: string, value: any) {
@@ -19,13 +24,11 @@ export class NumberParse<T> extends Parse<T> {
     this.model[key] = parseInt(value, 10)
   }
 
-  protected parseKey(key: string, option: IFieldOptions, data: any): void {
-    const value: any = data[option.name!]
-    if (!value) return
-
-    if (option.type === 'number') {
-      this.parseNumber(key, value)
-      return
+  private parseDecimal(key: string, value: any, options: IFieldOptions) {
+    if (typeof value === 'number') {
+      this.model[key] = value
     }
+    const precision = options.precision || 5
+    this.model[key] = parseFloat(parseFloat(value).toFixed(precision))
   }
 }
