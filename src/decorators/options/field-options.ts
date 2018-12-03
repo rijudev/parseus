@@ -1,4 +1,4 @@
-import { Transformer } from './transformer'
+import { ITransformer } from './transformer'
 import { IParameterlessConstructor } from '../../utils'
 
 export type FieldType =
@@ -62,7 +62,7 @@ export interface IFieldOptions {
    * Specifies a value transformer that is to be used to (un)marshal
    * this column when (un)marshal.
    */
-  transformer?: Transformer
+  transformer?: ITransformer
 
   /**
    * Indicate the field's constructor class of target

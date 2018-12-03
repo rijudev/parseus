@@ -43,12 +43,15 @@ export abstract class Parse<T> {
     }
   }
 
-  marshal(obj: object): object {
+  marshal(obj: any): object {
     Object.keys(this.fields).forEach(key => {
       const options = { ...this.fields[key] }
       if (options.transformer) {
-        // TODO: Here Transformer
-        // field.transformer.to(data)
+        obj[options.name!] = options.transformer.to!({
+          key: options.name!,
+          options,
+          data: this.model
+        })
         return
       }
 
@@ -74,8 +77,7 @@ export abstract class Parse<T> {
     Object.keys(this.fields).forEach(key => {
       const options = { ...this.fields[key] }
       if (options.transformer) {
-        // TODO: Here Transformer
-        // field.transformer.to(data)
+        this.model[key] = options.transformer.from!({ key, options, data })
         return
       }
 

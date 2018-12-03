@@ -1,13 +1,21 @@
+import { IFieldOptions } from './field-options'
+
+export interface ITransformerParams {
+  key: string
+  options: IFieldOptions
+  data: any
+}
+
 /**
  * Interface for objects that deal with (un)marshalling data.
  */
-export interface Transformer {
+export interface ITransformer {
   /**
    * Used to marshal data when writing to the new JSON.
    */
-  to?(value: any): any
+  to?(params: ITransformerParams): any
   /**
    * Used to unmarshal data when reading from the JSON .
    */
-  from?(value: any): any
+  from?(params: ITransformerParams): any
 }
