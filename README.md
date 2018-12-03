@@ -1,6 +1,6 @@
 # Parseus
 
-Parseus is a javascript library written in Typescript which allow marshall/unmarshall JSON into class. This library can run in NodeJS, Typescript and any JS platform.
+Parseus is a javascript library written in Typescript which allow marshall/unmarshall JSON into class instance. This library can run in NodeJS, Typescript and any JS platform.
 
 ```typescript
 class Person {
