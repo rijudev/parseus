@@ -19,7 +19,9 @@ export class ObjectParse<T> extends Parse<T> {
       return
     }
 
-    const newModel = toJSON ? Parseus.toJSON(value) : Parseus.from(value).to(options.factory!)
+    const newModel = toJSON
+      ? Parseus.toJSON(value, options.factory)
+      : Parseus.from(value).to(options.factory!)
     destination[key] = newModel
   }
 }

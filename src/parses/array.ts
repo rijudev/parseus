@@ -39,7 +39,9 @@ export class ArrayParse<T> extends Parse<T> {
         return this.parseSimpleArray(acc, item)(opts)
       }
 
-      const newValue = toJSON ? Parseus.toJSON(item) : Parseus.from(item).to(options.factory!)
+      const newValue = toJSON
+        ? Parseus.toJSON(item, options.factory)
+        : Parseus.from(item).to(options.factory!)
       acc.push(newValue)
       return acc
     }, [])

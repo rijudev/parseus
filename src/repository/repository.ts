@@ -11,8 +11,9 @@ export class Parseus {
     return new ParseusJSON(json)
   }
 
-  static toJSON<T>(obj: T): { [key: string]: any } {
-    const metadata = getMetadata(obj)
+  static toJSON<T>(obj: T, model?: IParameterlessConstructor<T>): { [key: string]: any } {
+    const metaObj = model ? new model() : obj
+    const metadata = getMetadata(metaObj)
     return mashallFactory(obj, metadata)
   }
 }
