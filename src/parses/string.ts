@@ -1,7 +1,6 @@
 import { v1 } from 'uuid'
 
 import { IFieldParse } from '../utils'
-import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 import { Parse, ParseFunction, IParseFunction } from './parse'
 
 export class StringParse<T> extends Parse<T> {
@@ -13,8 +12,12 @@ export class StringParse<T> extends Parse<T> {
     return {
       string: this.parseString,
       unique: this.parseUnique,
-      combine: undefined
+      combine: this.parseCombine
     }
+  }
+
+  private parseCombine({  }: IParseFunction) {
+    // TODO: implement
   }
 
   private parseUnique({ key, destination }: IParseFunction) {
