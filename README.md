@@ -33,7 +33,7 @@ const data = {
  * {
  *   name:'Jhon',
  *   lastName: 'Smith',
- *   aget: 25,
+ *   age: 25,
  *   gender: 'M',
  *   createdAt: Mon Jan 01 2018 08:00:00 GMT-0400 (Atlantic Standard Time) {}
  * }
