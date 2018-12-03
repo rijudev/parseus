@@ -35,7 +35,6 @@ const data = {
  *   aget: 25,
  *   gender: 'M',
  *   createdAt: Mon Jan 01 2018 08:00:00 GMT-0400 (Atlantic Standard Time) {} 
-
  * }
  **/ 
 const person = Parseus.from(data).to(Person) 
