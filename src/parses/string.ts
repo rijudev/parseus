@@ -10,29 +10,29 @@ export class StringParse<T> extends Parse<T> {
 
   protected getFieldTypes(): ParseFunction {
     return {
-      string: parseString,
-      unique: parseUnique
+      string: this.parseString,
+      unique: this.parseUnique
       // combine: parseCombine
     }
+  }
+
+  private parseUnique({ key, value, destination }: IParseFunction) {
+    destination[key] = value || v1()
+  }
+
+  private parseString({ key, value, destination }: IParseFunction) {
+    if (!value) {
+      return
+    }
+
+    if (typeof value === 'string') {
+      destination[key] = value
+    }
+
+    destination[key] = `${value}`
   }
 }
 
 // export function parseCombine({  }: IParseFunction) {
 //   // TODO: implement
 // }
-
-export function parseUnique({ key, value, destination }: IParseFunction) {
-  destination[key] = value || v1()
-}
-
-export function parseString({ key, value, destination }: IParseFunction) {
-  if (!value) {
-    return
-  }
-
-  if (typeof value === 'string') {
-    destination[key] = value
-  }
-
-  destination[key] = `${value}`
-}
