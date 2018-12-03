@@ -46,7 +46,7 @@ person.name = 'Sara'
 
 /**
  * The second parameter is optional, but if
- * the person instance has been mutated
+ * the class instance has been mutated
  * we should pass the original class for references
  *
  * Returns an object with the next structure { [key:string]: any}
