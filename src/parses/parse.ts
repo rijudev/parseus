@@ -16,14 +16,14 @@ export abstract class Parse<T> {
   protected fields: IFieldParse
   private model: any
 
-  constructor(protected objectClass: T, protected metadata: IFieldParse) {
-    this.model = objectClass
+  constructor(protected source: T, protected metadata: IFieldParse) {
+    this.model = source
     this.findAndSetFields()
   }
 
   private findAndSetFields() {
     const fieldTypes = Object.keys(this.getFieldTypes()) as Array<FieldType>
-    this.fields = Object.keys(this.metadata).reduce<IFieldParse>(
+    this.fields = Object.keys({ ...this.metadata }).reduce<IFieldParse>(
       this.reduceFields(fieldTypes, this.metadata),
       {}
     )

@@ -9,7 +9,7 @@ export type FieldType =
   | 'unique'
   | 'date'
   // | 'date-time'
-  | 'combine'
+  // | 'combine'
   | 'array'
   | 'object'
 
