@@ -22,7 +22,7 @@ const data = {
 Parseus.from(data).to(Person) // Returns an instance of Person like {"age": '26', siblings: '22', name:'Peter' }
 ```
 
-In progress...
+Still in progress...
 
 <!--
 A starter project that makes creating a TypeScript library extremely easy.
