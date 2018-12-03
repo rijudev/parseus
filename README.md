@@ -60,6 +60,8 @@ person.name = 'Sara'
 const personMarshalled = Parseus.toJSON(person, Person)
 ```
 
+Still in progress...
+
 <!--
 A starter project that makes creating a TypeScript library extremely easy.
 
