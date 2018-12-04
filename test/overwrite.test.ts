@@ -4,8 +4,8 @@ class Person {
   @Field({ precision: 4 })
   age?: number
 
-  @Field()
-  age2?: number
+  @Field({ type: 'string' })
+  age2?: string
 }
 
 const data = {
@@ -14,18 +14,15 @@ const data = {
   age3: '264.12345'
 }
 
-const newParseus = Parseus.parseOverrride({ number: () => 2 }, Person)
+const newParseus = Parseus.parseOverrride({ number: () => 2, string: () => 'hello' }, Person)
 
-// const Wrapper = Model => Parseus.parseOverrride({}, Model)
-// const Wrapper = Model => new Parseus(Model)
-
-describe(`Parseus[type=decimal]`, () => {
+describe(`Parseus[New Parseus Instance]`, () => {
   const result = newParseus.from(data)
-  test('should convert string number to decimal fixed 4', () => {
+  test('should convert all number fields in 2', () => {
     expect(result.age).toBe(2)
   })
 
-  test('should convert string number to decimal fixed default 5', () => {
-    expect(result.age2).toBe(2)
+  test('should convert all string fields in "hello"', () => {
+    expect(result.age2).toBe('hello')
   })
 })

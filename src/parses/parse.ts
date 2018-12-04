@@ -12,6 +12,9 @@ export abstract class Parse<T> {
   ) {
     this.model = source
     this.findAndSetFields()
+
+    this.getFieldTypes = this.getFieldTypes.bind(this)
+    this.parse = this.parse.bind(this)
   }
 
   private findAndSetFields() {

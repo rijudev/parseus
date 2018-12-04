@@ -12,9 +12,7 @@ export class Parseus<T> {
   }
 
   static toJSON<T>(obj: T, model?: IParameterlessConstructor<T>): { [key: string]: any } {
-    const metaObj = model ? new model() : obj
-    const metadata = getMetadata(metaObj)
-    return mashallFactory(obj, metadata)
+    return new Parseus(model!).toJSON(obj)
   }
 
   static parseOverrride<T>(parser: ParseFunction, model: IParameterlessConstructor<T>) {
@@ -30,7 +28,10 @@ export class Parseus<T> {
   }
 
   toJSON(obj: T): { [key: string]: any } {
-    return Parseus.toJSON(obj, this.model)
+    const metaObj = this.model ? new this.model() : obj
+    const metadata = getMetadata(metaObj)
+    return mashallFactory(obj, metadata, this.parser)
+    // return Parseus.toJSON(obj, this.model)
   }
 
   parseOverride(parser: ParseFunction) {
@@ -45,6 +46,6 @@ class ParseusJSON {
   to<T>(model: IParameterlessConstructor<T>): T {
     const obj = new model()
     const metadata = getMetadata(obj)
-    return parseFactory(obj, metadata, this.json) as T
+    return parseFactory(obj, metadata, this.json, this.parserOverride) as T
   }
 }
