@@ -108,6 +108,5 @@ export abstract class Parse<T> {
     return this.model
   }
 
-  // protected abstract parseKey(key: string, option: IFieldOptions, data: object): void
   protected abstract getFieldTypes(): ParseFunction
 }
