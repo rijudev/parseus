@@ -13,6 +13,6 @@ export class BooleanParse<T> extends Parse<T> {
   }
 
   private parseBoolean({ key, value, destination }: IParseFunction) {
-    destination[key] = Boolean(value)
+    return Boolean(value)
   }
 }

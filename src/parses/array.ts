@@ -33,7 +33,7 @@ export class ArrayParse<T> extends Parse<T> {
 
   private parseArray(opts: IParseFunction) {
     const { key, value, options, destination, toJSON } = opts
-    if (!Array.isArray(value)) return
+    if (!Array.isArray(value)) return []
     const newModel = value.reduce((acc: any[], item: any) => {
       if (typeof item !== 'object') {
         return this.parseSimpleArray(acc, item)(opts)
@@ -46,6 +46,6 @@ export class ArrayParse<T> extends Parse<T> {
       return acc
     }, [])
 
-    destination[key] = newModel
+    return newModel
   }
 }

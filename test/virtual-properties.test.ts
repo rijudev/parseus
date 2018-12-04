@@ -20,7 +20,7 @@ const data = {
 describe(`Parseus[type=number, isVirtual=true]`, () => {
   const result = Parseus.from(data).to(Person)
   const result2 = Parseus.toJSON({ ...result }, Person)
-  console.log(result, result2)
+
   test('should keep virtual field for to operations and remove in from', () => {
     expect(result.age1).toBe(26)
     expect(result2.age_1).toBe(undefined)

@@ -13,6 +13,6 @@ export class DateParse<T> extends Parse<T> {
   }
 
   private parseDate({ key, value, destination }: IParseFunction) {
-    destination[key] = new Date(value)
+    return new Date(value)
   }
 }

@@ -16,12 +16,12 @@ export class ObjectParse<T> extends Parse<T> {
 
   private parseObject({ key, value, options, destination, toJSON }: IParseFunction) {
     if (!options.factory || typeof options.factory !== 'function') {
-      return
+      return undefined
     }
 
     const newModel = toJSON
       ? Parseus.toJSON(value, options.factory)
       : Parseus.from(value).to(options.factory!)
-    destination[key] = newModel
+    return newModel
   }
 }

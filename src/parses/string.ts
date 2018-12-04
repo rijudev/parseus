@@ -16,20 +16,16 @@ export class StringParse<T> extends Parse<T> {
     }
   }
 
-  private parseUnique({ key, value, destination }: IParseFunction) {
-    destination[key] = value || v1()
+  private parseUnique({ key, value, destination }: IParseFunction): string {
+    return value || v1()
   }
 
-  private parseString({ key, value, destination }: IParseFunction) {
+  private parseString({ key, value, destination }: IParseFunction): string | undefined {
     if (!value) {
-      return
+      return undefined
     }
 
-    if (typeof value === 'string') {
-      destination[key] = value
-    }
-
-    destination[key] = `${value}`
+    return typeof value === 'string' ? value : `${value}`
   }
 }
 

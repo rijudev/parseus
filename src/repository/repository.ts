@@ -6,7 +6,7 @@ function getMetadata<T>(obj: T): IFieldParse {
   return Reflect.getMetadata(PARSEUS_META_KEY, obj)
 }
 
-export class Parseus {
+export class Parseus<T> {
   static from(json: object): ParseusJSON {
     return new ParseusJSON(json)
   }
@@ -15,6 +15,16 @@ export class Parseus {
     const metaObj = model ? new model() : obj
     const metadata = getMetadata(metaObj)
     return mashallFactory(obj, metadata)
+  }
+
+  constructor(private model: IParameterlessConstructor<T>) {}
+
+  from(json: object): T {
+    return Parseus.from(json).to(this.model)
+  }
+
+  toJSON(obj: T): { [key: string]: any } {
+    return Parseus.toJSON(obj, this.model)
   }
 }
 
