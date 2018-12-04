@@ -9,8 +9,6 @@ export function Field(options?: IFieldOptions): Function {
         ? Reflect.getMetadata('design:type', context, propertyName)
         : undefined
 
-    // console.log(propertyName, reflectType)
-
     if (!opts.factory) {
       opts.factory = reflectType
     }

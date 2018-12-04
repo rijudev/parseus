@@ -67,5 +67,5 @@ export interface IFieldOptions {
   /**
    * Indicate the field's constructor class of target
    */
-  factory?: IParameterlessConstructor<object>
+  factory?: IParameterlessConstructor<any>
 }

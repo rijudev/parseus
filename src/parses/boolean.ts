@@ -1,9 +1,9 @@
-import { IFieldParse } from '../utils'
-import { Parse, ParseFunction, IParseFunction } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
+import { Parse } from './parse'
 
 export class BooleanParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
+    super(model, metadata, parser)
   }
 
   protected getFieldTypes(): ParseFunction {
@@ -13,6 +13,6 @@ export class BooleanParse<T> extends Parse<T> {
   }
 
   private parseBoolean({ key, value, destination }: IParseFunction) {
-    destination[key] = Boolean(value)
+    return Boolean(value)
   }
 }

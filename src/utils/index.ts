@@ -8,3 +8,14 @@ export interface IFieldParse {
 export interface IParameterlessConstructor<T> {
   new (): T
 }
+
+export interface IParseFunction {
+  key: string
+  value: any
+  options: IFieldOptions
+  data: any
+  destination: any
+  toJSON?: boolean
+}
+
+export type ParseFunction = { [type in FieldType]?: (options: IParseFunction) => any }

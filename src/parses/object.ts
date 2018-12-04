@@ -1,11 +1,11 @@
-import { IFieldParse } from '../utils'
-import { Parse, ParseFunction, IParseFunction } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
+import { Parse } from './parse'
 import { IFieldOptions } from '../decorators/options/field-options'
 import Parseus from '../parseus'
 
 export class ObjectParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
+    super(model, metadata, parser)
   }
 
   protected getFieldTypes(): ParseFunction {
@@ -16,10 +16,12 @@ export class ObjectParse<T> extends Parse<T> {
 
   private parseObject({ key, value, options, destination, toJSON }: IParseFunction) {
     if (!options.factory || typeof options.factory !== 'function') {
-      return
+      return undefined
     }
 
-    const newModel = toJSON ? Parseus.toJSON(value) : Parseus.from(value).to(options.factory!)
-    destination[key] = newModel
+    const newModel = toJSON
+      ? Parseus.toJSON(value, options.factory)
+      : Parseus.from(value).to(options.factory!)
+    return newModel
   }
 }

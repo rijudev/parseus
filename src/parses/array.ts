@@ -1,12 +1,12 @@
-import { Parse, ParseFunction, IParseFunction } from './parse'
-import { IFieldParse } from '../utils'
+import { Parse } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import Parseus from '../parseus'
 import { Field } from '../decorators/fields/field'
 import { FieldType } from '../decorators/options/field-options'
 
 export class ArrayParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser?: ParseFunction) {
+    super(model, metadata, parser)
     this.parseArray = this.parseArray.bind(this)
   }
 
@@ -33,17 +33,19 @@ export class ArrayParse<T> extends Parse<T> {
 
   private parseArray(opts: IParseFunction) {
     const { key, value, options, destination, toJSON } = opts
-    if (!Array.isArray(value)) return
+    if (!Array.isArray(value)) return []
     const newModel = value.reduce((acc: any[], item: any) => {
       if (typeof item !== 'object') {
         return this.parseSimpleArray(acc, item)(opts)
       }
 
-      const newValue = toJSON ? Parseus.toJSON(item) : Parseus.from(item).to(options.factory!)
+      const newValue = toJSON
+        ? Parseus.toJSON(item, options.factory)
+        : Parseus.from(item).to(options.factory!)
       acc.push(newValue)
       return acc
     }, [])
 
-    destination[key] = newModel
+    return newModel
   }
 }

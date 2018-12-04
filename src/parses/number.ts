@@ -1,10 +1,11 @@
-import { Parse, ParseFunction, IParseFunction } from './parse'
-import { IFieldParse } from '../utils'
+import { Parse } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { FieldType, IFieldOptions } from '../decorators/options/field-options'
+import { DEFAULT_PRECISION } from '../helpers/constant'
 
 export class NumberParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
+    super(model, metadata, parser)
   }
 
   protected getFieldTypes(): ParseFunction {
@@ -15,18 +16,14 @@ export class NumberParse<T> extends Parse<T> {
   }
 
   private parseNumber({ key, value, destination }: IParseFunction) {
-    if (typeof value === 'number') {
-      destination[key] = value
-    }
-
-    destination[key] = parseInt(value, 10)
+    return typeof value === 'number' ? value : parseInt(value, 10)
   }
 
   private parseDecimal({ key, value, options, destination }: IParseFunction) {
     if (typeof value === 'number') {
-      destination[key] = value
+      return value
     }
-    const precision = options.precision || 5
-    destination[key] = parseFloat(parseFloat(value).toFixed(precision))
+    const precision = options.precision || DEFAULT_PRECISION
+    return parseFloat(parseFloat(value).toFixed(precision))
   }
 }
