@@ -1,22 +1,15 @@
-import { IFieldParse } from '../utils'
-import { FieldType, IFieldOptions } from '../decorators/options/field-options'
-
-export interface IParseFunction {
-  key: string
-  value: any
-  options: IFieldOptions
-  data: any
-  destination: any
-  toJSON?: boolean
-}
-
-export type ParseFunction = { [type in FieldType]?: (options: IParseFunction) => any }
+import { IFieldParse, ParseFunction } from '../utils'
+import { FieldType } from '../decorators/options/field-options'
 
 export abstract class Parse<T> {
   protected fields: IFieldParse
   private model: any
 
-  constructor(protected source: T, protected metadata: IFieldParse) {
+  constructor(
+    protected source: T,
+    protected metadata: IFieldParse,
+    protected parser?: ParseFunction
+  ) {
     this.model = source
     this.findAndSetFields()
   }
@@ -65,7 +58,12 @@ export abstract class Parse<T> {
       const value: any = this.model[key]
       if (!value || options.isVirtual) return
 
-      const fieldFunc = this.getFieldTypes()[options.type!]
+      const fieldTypes = {
+        ...this.getFieldTypes(),
+        ...this.parser
+      }
+
+      const fieldFunc = fieldTypes[options.type!]
       if (!fieldFunc) return
       const returnValue = fieldFunc({
         value,
@@ -93,7 +91,12 @@ export abstract class Parse<T> {
       const value: any = (data as any)[options.name!] || options.default
       if (!value && options.type !== 'unique') return
 
-      const fieldFunc = this.getFieldTypes()[options.type!]
+      const fieldTypes = {
+        ...this.getFieldTypes(),
+        ...this.parser
+      }
+
+      const fieldFunc = fieldTypes[options.type!]
       if (!fieldFunc) return
 
       const returnValue = fieldFunc({ key, value, options, data, destination: this.model })

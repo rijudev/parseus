@@ -1,11 +1,11 @@
-import { Parse, ParseFunction, IParseFunction } from './parse'
-import { IFieldParse } from '../utils'
+import { Parse } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 import { DEFAULT_PRECISION } from '../helpers/constant'
 
 export class NumberParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
+    super(model, metadata, parser)
   }
 
   protected getFieldTypes(): ParseFunction {

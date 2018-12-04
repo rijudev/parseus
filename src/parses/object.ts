@@ -1,11 +1,11 @@
-import { IFieldParse } from '../utils'
-import { Parse, ParseFunction, IParseFunction } from './parse'
+import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
+import { Parse } from './parse'
 import { IFieldOptions } from '../decorators/options/field-options'
 import Parseus from '../parseus'
 
 export class ObjectParse<T> extends Parse<T> {
-  constructor(model: T, metadata: IFieldParse) {
-    super(model, metadata)
+  constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
+    super(model, metadata, parser)
   }
 
   protected getFieldTypes(): ParseFunction {
