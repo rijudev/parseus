@@ -1,7 +1,7 @@
 import Parseus, { Field } from '../src/parseus'
 
 class Person {
-  @Field({ precision: 4 })
+  @Field({ fixed: 4 })
   age?: number
 
   @Field({ type: 'string' })

@@ -22,7 +22,7 @@ export class NumberParse<T> extends Parse<T> {
     if (typeof value === 'number') {
       return value
     }
-    const precision = options.precision || DEFAULT_PRECISION
+    const precision = options.fixed || DEFAULT_PRECISION
     return parseFloat(parseFloat(value).toFixed(precision))
   }
 }

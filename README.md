@@ -1,4 +1,4 @@
-# Parseus
+<h1 align="center">Parseus</h1>
 
 Parseus is a javascript library written in Typescript which allow marshall/unmarshall JSON into class instance. This library is able to run in NodeJS, Typescript or any JS platform.
 
@@ -119,5 +119,34 @@ person.name = 'Sara'
  **/
 const personMarshalled = Parseus.toJSON(person, Person)
 ```
+
+<h2>API</h2>
+
+<h3>FieldType</h3>
+Parseus allow the next field type values: 
+<ul>
+  <li>string</li>
+  <li>number</li>
+  <li>decimal</li>
+  <li>boolean</li>
+  <li>unique</li>
+  <li>date</li>
+  <li>array</li>
+  <li>object</li>
+</ul>
+
+<h3>Field</h3>
+
+| Property    | Description                                                                                                            | Type         | Default  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ | -------- |
+| type        | Field type. Must be one of the values from the FieldType                                                               | string       | 'string' |
+| name        | Key name in source object. if this value is not provided it takes the model field's name wrapped                       | string       | -        |
+| isVirtual   | Indicates if field's value is ignored when marshall Object                                                             | boolean      | false    |
+| default     | Indicates the initial field's value                                                                                    | any          |          |
+| readOnly    | Indicates if field's value is read only (freeze)                                                                       | boolean      | false    |
+| fixed       | The scale for a decimal (exact numeric) field, which represents the number of digits to the right of the decimal point | number       | 6        |
+| transformer | Specifies a value transformer that is to be used to (un)marshall the current field when (un)marshall                   | ITransformer |          |
+| factory     | Indicates the field's model class of target                                                                            | class        |          |
+
 
 Still in progress...

@@ -49,7 +49,7 @@ class Patient {
 
   @Field({
     name: 'patient_decimal_value',
-    precision: 3,
+    fixed: 3,
     type: 'decimal'
   })
   decimalValue: number

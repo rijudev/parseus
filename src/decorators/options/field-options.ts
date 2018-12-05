@@ -33,12 +33,12 @@ export interface IFieldOptions {
   length?: number
 
   /**
-   * Indicates if field's value can not be set to null or undefined when marshal JSON
+   * Indicates if field's value can not be set to null or undefined when marshall JSON
    */
   isRequired?: boolean
 
   /**
-   * Indicates if field's value is ignored when marshal JSON
+   * Indicates if field's value is ignored when marshall JSON
    */
   isVirtual?: boolean
 
@@ -53,10 +53,10 @@ export interface IFieldOptions {
   readOnly?: boolean
 
   /**
-   * The precision for a decimal (exact numeric) field (applies only for decimal column), which is the maximum
-   * number of digits that are stored for the values.
+   * The scale for a decimal (exact numeric) field (applies only for decimal field), which represents the number
+   * of digits to the right of the decimal point
    */
-  precision?: number
+  fixed?: number
 
   /**
    * Specifies a value transformer that is to be used to (un)marshal
