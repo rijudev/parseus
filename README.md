@@ -39,7 +39,7 @@ const data = {
  * }
  **/
 
-const person = Parseus.from(data).to(Person)
+const person = Parseus.decode(data).to(Person)
 person.gender = 'F'
 person.age = 18
 person.name = 'Sara'
@@ -58,7 +58,7 @@ person.name = 'Sara'
  *   "person_created_at": "2018-01-01T12:00:00.000Z"
  * }
  **/
-const personMarshalled = Parseus.toJSON(person, Person)
+const personMarshalled = Parseus.encode(person, Person)
 ```
 
 ### Usage Typescript
@@ -98,7 +98,7 @@ const data = {
  * }
  **/
 
-const person = Parseus.from(data).to(Person)
+const person = Parseus.decode(data).to(Person)
 person.gender = 'F'
 person.age = 18
 person.name = 'Sara'
@@ -117,7 +117,7 @@ person.name = 'Sara'
  *   "person_created_at": "2018-01-01T12:00:00.000Z"
  * }
  **/
-const personMarshalled = Parseus.toJSON(person, Person)
+const personMarshalled = Parseus.encode(person, Person)
 ```
 
 <h2>Instalation</h2>
