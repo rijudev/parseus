@@ -17,7 +17,7 @@ export class ArrayParse<T> extends Parse<T> {
   }
 
   private parseSimpleArray(acc: any[], item: any) {
-    return function({ key, value, options, destination, toJSON }: IParseFunction) {
+    return function({ key, value, options }: IParseFunction) {
       class InnerClasss {
         @Field({
           type: typeof (options.factory as Function)() as FieldType,
@@ -32,7 +32,7 @@ export class ArrayParse<T> extends Parse<T> {
   }
 
   private parseArray(opts: IParseFunction) {
-    const { key, value, options, destination, toJSON } = opts
+    const { value, options, toJSON } = opts
     if (!Array.isArray(value)) return []
     const newModel = value.reduce((acc: any[], item: any) => {
       if (typeof item !== 'object') {

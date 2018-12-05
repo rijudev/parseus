@@ -1,6 +1,5 @@
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { Parse } from './parse'
-import { IFieldOptions } from '../decorators/options/field-options'
 import Parseus from '../parseus'
 
 export class ObjectParse<T> extends Parse<T> {

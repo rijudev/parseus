@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
+    "noUnusedLocals": true,
     "emitDecoratorMetadata": true,
     "declarationDir": "dist/types",
     "outDir": "dist/lib",

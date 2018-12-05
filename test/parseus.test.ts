@@ -1,5 +1,4 @@
 import Parseus, { Field } from '../src/parseus'
-import { IParameterlessConstructor } from '../src/utils'
 
 class Eligibility {
   @Field({

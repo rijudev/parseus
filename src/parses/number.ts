@@ -1,6 +1,5 @@
 import { Parse } from './parse'
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
-import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 import { DEFAULT_PRECISION } from '../helpers/constant'
 
 export class NumberParse<T> extends Parse<T> {

@@ -28,7 +28,3 @@ export class StringParse<T> extends Parse<T> {
     return typeof value === 'string' ? value : `${value}`
   }
 }
-
-// export function parseCombine({  }: IParseFunction) {
-//   // TODO: implement
-// }
