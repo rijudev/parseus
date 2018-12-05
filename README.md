@@ -135,7 +135,7 @@ Parseus allow the next field type values:
   <li>object</li>
 </ul>
 
-<h3>Field</h3>
+<h3>Field Options</h3>
 
 | Property    | Description                                                                                                            | Type         | Default  |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ | -------- |
@@ -148,5 +148,19 @@ Parseus allow the next field type values:
 | transformer | Specifies a value transformer that is to be used to (un)marshall the current field when (un)marshall                   | ITransformer | -        |
 | factory     | Indicates the field's model class of target                                                                            | class        | -        |
 
+<h3>ITransformer</h3>
+
+| Property | Description                                          | Type               | Default |
+| -------- | ---------------------------------------------------- | ------------------ | ------- |
+| to       | Used to marshall data when writing to the new object | ITransformerParams | -       |
+| from     | Used to unmarshall data when reading from object     | ITransformerParams | -       |
+
+<h3>ITransformerParams</h3>
+
+| Property | Description                   | Type          | Default |
+| -------- | ----------------------------- | ------------- | ------- |
+| key      | key name in source object     | string        | -       |
+| options  | Field type options field's    | IFieldOptions | -       |
+| data     | complete mapped source object | object        | -       |
 
 Still in progress...
