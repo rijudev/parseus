@@ -14,7 +14,7 @@ export interface IParseFunction {
   options: IFieldOptions
   data: any
   destination: any
-  toJSON?: boolean
+  isEncoding?: boolean
 }
 
 export type ParseFunction = { [type in FieldType]?: (options: IParseFunction) => any }
