@@ -119,6 +119,20 @@ person.name = 'Sara'
  **/
 const personMarshalled = Parseus.toJSON(person, Person)
 ```
+##Instalation
+
+1. Install the npm package:
+
+   `npm install parseus --save` or using yarn `yarn add parseus`
+
+2. You need to install `reflect-metadata` shim:
+
+   `npm install reflect-metadata --save` or using yarn `yarn add reflect-metadata` 
+  
+    and import it somewhere in the global place of your app:
+
+    `import 'reflect-metadata'`
+
 
 <h2>API</h2>
 
