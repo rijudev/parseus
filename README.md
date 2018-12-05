@@ -150,10 +150,10 @@ Parseus allow the next field type values:
 
 <h3>ITransformer</h3>
 
-| Property | Description                                          | Type               | Default |
-| -------- | ---------------------------------------------------- | ------------------ | ------- |
-| to       | Used to marshall data when writing to the new object | ITransformerParams | -       |
-| from     | Used to unmarshall data when reading from object     | ITransformerParams | -       |
+| Property | Description                                          | Type     | Default |
+| -------- | ---------------------------------------------------- | -------- | ------- |
+| to       | Used to marshall data when writing to the new object | Function | -       |
+| from     | Used to unmarshall data when reading from object     | Function | -       |
 
 <h3>ITransformerParams</h3>
 
