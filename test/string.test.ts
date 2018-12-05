@@ -19,20 +19,20 @@ const data = {
 
 describe(`Parseus[type=string]`, () => {
   test('should convert number to string', () => {
-    const result = Parseus.from(data).to(Person)
+    const result = Parseus.decode(data).to(Person)
     expect(typeof result.age).toBe('string')
     expect(result.age).toBe('26')
   })
 
   describe(`defaultValue`, () => {
-    const result = Parseus.from(data).to(Person)
+    const result = Parseus.decode(data).to(Person)
     test('should set default value', () => {
       expect(result.default).toBe('23')
     })
   })
 
   describe(`readOnly`, () => {
-    const result = Parseus.from(data).to(Person)
+    const result = Parseus.decode(data).to(Person)
     test('should convert to string and not allow mutation', () => {
       expect(typeof result.sibilings).toBe('string')
       result.sibilings = '25'

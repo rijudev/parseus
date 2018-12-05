@@ -1,6 +1,5 @@
 import { Parse } from './parse'
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
-import { FieldType, IFieldOptions } from '../decorators/options/field-options'
 import { DEFAULT_PRECISION } from '../helpers/constant'
 
 export class NumberParse<T> extends Parse<T> {
@@ -23,7 +22,7 @@ export class NumberParse<T> extends Parse<T> {
     if (typeof value === 'number') {
       return value
     }
-    const precision = options.precision || DEFAULT_PRECISION
+    const precision = options.fixed || DEFAULT_PRECISION
     return parseFloat(parseFloat(value).toFixed(precision))
   }
 }

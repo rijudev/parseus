@@ -1,7 +1,7 @@
 import Parseus, { Field } from '../src/parseus'
 
 class Person {
-  @Field({ precision: 4 })
+  @Field({ fixed: 4 })
   age?: number
 
   @Field({ type: 'string' })
@@ -17,7 +17,7 @@ const data = {
 const newParseus = Parseus.parseOverrride({ number: () => 2, string: () => 'hello' }, Person)
 
 describe(`Parseus[New Parseus Instance]`, () => {
-  const result = newParseus.from(data)
+  const result = newParseus.decode(data)
   test('should convert all number fields in 2', () => {
     expect(result.age).toBe(2)
   })

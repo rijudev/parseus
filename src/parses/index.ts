@@ -28,5 +28,5 @@ export function parseFactory<T>(
 
 export function mashallFactory<T>(model: T, metadata: IFieldParse, parser?: ParseFunction): object {
   const obj = {}
-  return getParseArray(model, metadata, parser!).reduce((_, parser) => parser.marshal(obj), obj)
+  return getParseArray(model, metadata, parser!).reduce((_, parser) => parser.marshall(obj), obj)
 }

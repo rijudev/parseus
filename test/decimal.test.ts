@@ -1,7 +1,7 @@
 import Parseus, { Field } from '../src/parseus'
 
 class Person {
-  @Field({ type: 'decimal', precision: 4 })
+  @Field({ type: 'decimal', fixed: 4 })
   age?: number
 
   @Field({ type: 'decimal' })
@@ -15,7 +15,7 @@ const data = {
 }
 
 describe(`Parseus[type=decimal]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
   test('should convert string number to decimal fixed 4', () => {
     expect(result.age).toBe(26.1234)
   })

@@ -1,18 +1,19 @@
 import { PARSEUS_META_KEY } from '../helpers/constant'
 import { parseFactory, mashallFactory } from '../parses'
 import { IParameterlessConstructor, IFieldParse, ParseFunction } from '../utils'
+import { getMetadata } from '../helpers/metadata'
 
-function getMetadata<T>(obj: T): IFieldParse {
-  return Reflect.getMetadata(PARSEUS_META_KEY, obj)
+function getMetadataParse<T>(obj: T): IFieldParse {
+  return getMetadata(PARSEUS_META_KEY, obj)
 }
 
 export class Parseus<T> {
-  static from(json: object): ParseusJSON {
+  static decode(json: object): ParseusJSON {
     return new ParseusJSON(json)
   }
 
-  static toJSON<T>(obj: T, model?: IParameterlessConstructor<T>): { [key: string]: any } {
-    return new Parseus(model!).toJSON(obj)
+  static encode<T>(obj: T, model?: IParameterlessConstructor<T>): { [key: string]: any } {
+    return new Parseus(model!).encode(obj)
   }
 
   static parseOverrride<T>(parser: ParseFunction, model: IParameterlessConstructor<T>) {
@@ -23,13 +24,13 @@ export class Parseus<T> {
 
   constructor(private model: IParameterlessConstructor<T>) {}
 
-  from(json: object): T {
+  decode(json: object): T {
     return new ParseusJSON(json, this.parser).to(this.model)
   }
 
-  toJSON(obj: T): { [key: string]: any } {
+  encode(obj: T): { [key: string]: any } {
     const metaObj = this.model ? new this.model() : obj
-    const metadata = getMetadata(metaObj)
+    const metadata = getMetadataParse(metaObj)
     return mashallFactory(obj, metadata, this.parser)
     // return Parseus.toJSON(obj, this.model)
   }
@@ -45,7 +46,7 @@ class ParseusJSON {
 
   to<T>(model: IParameterlessConstructor<T>): T {
     const obj = new model()
-    const metadata = getMetadata(obj)
+    const metadata = getMetadataParse(obj)
     return parseFactory(obj, metadata, this.json, this.parserOverride) as T
   }
 }

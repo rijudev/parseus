@@ -17,7 +17,7 @@ export class ArrayParse<T> extends Parse<T> {
   }
 
   private parseSimpleArray(acc: any[], item: any) {
-    return function({ key, value, options, destination, toJSON }: IParseFunction) {
+    return function({ key, value, options }: IParseFunction) {
       class InnerClasss {
         @Field({
           type: typeof (options.factory as Function)() as FieldType,
@@ -25,14 +25,14 @@ export class ArrayParse<T> extends Parse<T> {
         })
         value: any
       }
-      const newValue = Parseus.from({ value: item }).to(InnerClasss)
+      const newValue = Parseus.decode({ value: item }).to(InnerClasss)
       acc.push(newValue.value)
       return acc
     }
   }
 
   private parseArray(opts: IParseFunction) {
-    const { key, value, options, destination, toJSON } = opts
+    const { value, options, toJSON } = opts
     if (!Array.isArray(value)) return []
     const newModel = value.reduce((acc: any[], item: any) => {
       if (typeof item !== 'object') {
@@ -40,8 +40,8 @@ export class ArrayParse<T> extends Parse<T> {
       }
 
       const newValue = toJSON
-        ? Parseus.toJSON(item, options.factory)
-        : Parseus.from(item).to(options.factory!)
+        ? Parseus.encode(item, options.factory)
+        : Parseus.decode(item).to(options.factory!)
       acc.push(newValue)
       return acc
     }, [])

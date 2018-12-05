@@ -1,6 +1,5 @@
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { Parse } from './parse'
-import { IFieldOptions } from '../decorators/options/field-options'
 import Parseus from '../parseus'
 
 export class ObjectParse<T> extends Parse<T> {
@@ -20,8 +19,8 @@ export class ObjectParse<T> extends Parse<T> {
     }
 
     const newModel = toJSON
-      ? Parseus.toJSON(value, options.factory)
-      : Parseus.from(value).to(options.factory!)
+      ? Parseus.encode(value, options.factory)
+      : Parseus.decode(value).to(options.factory!)
     return newModel
   }
 }

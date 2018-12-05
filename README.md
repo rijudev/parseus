@@ -1,4 +1,4 @@
-# Parseus
+<h1 align="center">Parseus</h1>
 
 Parseus is a javascript library written in Typescript which allow marshall/unmarshall JSON into class instance. This library is able to run in NodeJS, Typescript or any JS platform.
 
@@ -39,7 +39,7 @@ const data = {
  * }
  **/
 
-const person = Parseus.from(data).to(Person)
+const person = Parseus.decode(data).to(Person)
 person.gender = 'F'
 person.age = 18
 person.name = 'Sara'
@@ -58,7 +58,7 @@ person.name = 'Sara'
  *   "person_created_at": "2018-01-01T12:00:00.000Z"
  * }
  **/
-const personMarshalled = Parseus.toJSON(person, Person)
+const personMarshalled = Parseus.encode(person, Person)
 ```
 
 ### Usage Typescript
@@ -98,7 +98,7 @@ const data = {
  * }
  **/
 
-const person = Parseus.from(data).to(Person)
+const person = Parseus.decode(data).to(Person)
 person.gender = 'F'
 person.age = 18
 person.name = 'Sara'
@@ -117,7 +117,65 @@ person.name = 'Sara'
  *   "person_created_at": "2018-01-01T12:00:00.000Z"
  * }
  **/
-const personMarshalled = Parseus.toJSON(person, Person)
+const personMarshalled = Parseus.encode(person, Person)
 ```
+
+<h2>Instalation</h2>
+
+1. Install the npm package:
+
+   `npm install parseus --save` or using yarn `yarn add parseus`
+
+2. You need to install `reflect-metadata` shim:
+
+   `npm install reflect-metadata --save` or using yarn `yarn add reflect-metadata` 
+  
+    and import it somewhere in the global place of your app:
+
+    `import 'reflect-metadata'`
+
+
+<h2>API</h2>
+
+<h3>FieldType</h3>
+Parseus allow the next field type values: 
+<ul>
+  <li>string</li>
+  <li>number</li>
+  <li>decimal</li>
+  <li>boolean</li>
+  <li>unique</li>
+  <li>date</li>
+  <li>array</li>
+  <li>object</li>
+</ul>
+
+<h3>Field Options</h3>
+
+| Property    | Description                                                                                                            | Type         | Default  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ------------ | -------- |
+| type        | Field type. Must be one of the values from the FieldType                                                               | string       | 'string' |
+| name        | Key name in source object. if this value is not provided it takes the model field's name wrapped                       | string       | -        |
+| isVirtual   | Indicates if field's value is ignored when marshall Object                                                             | boolean      | false    |
+| default     | Indicates the initial field's value                                                                                    | any          | -        |
+| readOnly    | Indicates if field's value is read only (freeze)                                                                       | boolean      | false    |
+| fixed       | The scale for a decimal (exact numeric) field, which represents the number of digits to the right of the decimal point | number       | 6        |
+| transformer | Specifies a value transformer that is to be used to (un)marshall the current field when (un)marshall                   | ITransformer | -        |
+| factory     | Indicates the field's model class of target                                                                            | class        | -        |
+
+<h3>ITransformer</h3>
+
+| Property | Description                                          | Type     | Default |
+| -------- | ---------------------------------------------------- | -------- | ------- |
+| to       | Used to marshall data when writing to the new object | Function | -       |
+| from     | Used to unmarshall data when reading from object     | Function | -       |
+
+<h3>ITransformerParams</h3>
+
+| Property | Description                   | Type          | Default |
+| -------- | ----------------------------- | ------------- | ------- |
+| key      | key name in source object     | string        | -       |
+| options  | Field type options field's    | IFieldOptions | -       |
+| data     | complete mapped source object | object        | -       |
 
 Still in progress...

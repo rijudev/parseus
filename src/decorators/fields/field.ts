@@ -1,69 +1,43 @@
 import { IFieldOptions, FieldType } from '../options/field-options'
 import { PARSEUS_META_KEY } from '../../helpers/constant'
+import { getReflectType, mergeMetadata } from '../../helpers/metadata'
+import { setReadOnly } from '../../helpers/object'
+
+function getType(reflectType: Function): FieldType {
+  if (reflectType === Array) {
+    return 'array'
+  } else {
+    return typeof reflectType === 'function'
+      ? ((typeof reflectType()).toLowerCase() as FieldType)
+      : 'string'
+  }
+}
 
 export function Field(options?: IFieldOptions): Function {
   return function(context: any, propertyName: string, descriptor: TypedPropertyDescriptor<any>) {
     const opts: IFieldOptions = { ...options }
-    const reflectType =
-      Reflect && Reflect.getMetadata
-        ? Reflect.getMetadata('design:type', context, propertyName)
-        : undefined
+    const reflectType = getReflectType(context, propertyName)
 
     if (!opts.factory) {
       opts.factory = reflectType
     }
 
     if (!opts.type) {
-      if (reflectType === Array) {
-        opts.type = 'array'
-      } else {
-        opts.type =
-          typeof reflectType === 'function'
-            ? ((typeof reflectType()).toLowerCase() as FieldType)
-            : 'string'
-      }
+      opts.type = getType(reflectType)
     }
 
     if (!opts.name) {
       opts.name = propertyName
     }
 
-    if (opts.type === 'array') {
-      if (!opts.default) {
-        opts.default = []
-      }
+    if (opts.type === 'array' && !opts.default) {
+      opts.default = []
     }
 
     if (opts.readOnly) {
-      const readOnlyPropertyname = '_' + propertyName
-      const getter = () => {
-        return context[readOnlyPropertyname]
-      }
-      const setter = (newValue: any) => {
-        if (context[readOnlyPropertyname]) return
-        context[readOnlyPropertyname] = newValue
-      }
-
-      // Delete property.
-      if (delete context[propertyName]) {
-        // Create new property with getter and setter
-        Object.defineProperty(context, propertyName, {
-          get: getter,
-          set: setter,
-          enumerable: true,
-          configurable: true
-        })
-      }
+      setReadOnly(context, propertyName)
     }
 
-    const previousMetadata = Reflect.getMetadata(PARSEUS_META_KEY, context)
-    Reflect.defineMetadata(
-      PARSEUS_META_KEY,
-      {
-        ...previousMetadata,
-        [propertyName]: opts
-      },
-      context
-    )
+    mergeMetadata(PARSEUS_META_KEY, opts, context, propertyName)
   }
 }

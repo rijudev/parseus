@@ -12,7 +12,7 @@ export class BooleanParse<T> extends Parse<T> {
     }
   }
 
-  private parseBoolean({ key, value, destination }: IParseFunction) {
+  private parseBoolean({ value }: IParseFunction) {
     return Boolean(value)
   }
 }

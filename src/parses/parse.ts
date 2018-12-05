@@ -1,5 +1,6 @@
 import { IFieldParse, ParseFunction } from '../utils'
 import { FieldType } from '../decorators/options/field-options'
+import { cloneObject } from '../helpers/object'
 
 export abstract class Parse<T> {
   protected fields: IFieldParse
@@ -43,7 +44,7 @@ export abstract class Parse<T> {
     this.model[name] = value
   }
 
-  marshal(obj: any): object {
+  marshall(obj: any): object {
     const setObj = (name: string, value: any) => (obj[name] = value)
 
     Object.keys(this.fields).forEach(key => {
@@ -51,8 +52,8 @@ export abstract class Parse<T> {
       if (options.transformer) {
         const value = options.transformer.to!({
           key: options.name!,
-          options,
-          data: this.model
+          options: cloneObject(options),
+          data: cloneObject(this.model)
         })
         setObj(options.name!, value)
         return
@@ -70,9 +71,9 @@ export abstract class Parse<T> {
       if (!fieldFunc) return
       const returnValue = fieldFunc({
         value,
-        options,
         key: options.name!,
-        data: this.model,
+        options: cloneObject(options),
+        data: cloneObject(this.model),
         destination: obj,
         toJSON: true
       })
@@ -86,7 +87,11 @@ export abstract class Parse<T> {
     Object.keys(this.fields).forEach(key => {
       const options = { ...this.fields[key] }
       if (options.transformer) {
-        const value = options.transformer.from!({ key, options, data })
+        const value = options.transformer.from!({
+          key,
+          options: cloneObject(options),
+          data: cloneObject(data)
+        })
         this.setModel(key, value)
         return
       }
@@ -102,7 +107,13 @@ export abstract class Parse<T> {
       const fieldFunc = fieldTypes[options.type!]
       if (!fieldFunc) return
 
-      const returnValue = fieldFunc({ key, value, options, data, destination: this.model })
+      const returnValue = fieldFunc({
+        key,
+        value,
+        options: cloneObject(options),
+        data: cloneObject(data),
+        destination: cloneObject(this.model)
+      })
       this.setModel(key, returnValue)
     })
     return this.model

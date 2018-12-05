@@ -26,7 +26,7 @@ const data: any = {
 }
 
 describe(`Parseus[type=object]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
   test(`should convert object's properties`, () => {
     expect(typeof result.person).toBe('object')
     expect(result.person.name).toBe('22')

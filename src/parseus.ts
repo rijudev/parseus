@@ -1,6 +1,10 @@
 import 'reflect-metadata'
 import { Parseus } from './repository/repository'
 
-export default Parseus
-
 export * from './decorators/fields/field'
+export * from './decorators/options/field-options'
+export * from './decorators/options/transformer'
+
+export * from './utils'
+
+export default Parseus
