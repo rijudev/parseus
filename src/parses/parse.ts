@@ -75,7 +75,7 @@ export abstract class Parse<T> {
         options: cloneObject(options),
         data: cloneObject(this.model),
         destination: obj,
-        toJSON: true
+        isEncoding: true
       })
       setObj(options.name!, returnValue)
     })

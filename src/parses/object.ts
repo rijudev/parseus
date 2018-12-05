@@ -13,14 +13,14 @@ export class ObjectParse<T> extends Parse<T> {
     }
   }
 
-  private parseObject({ key, value, options, destination, toJSON }: IParseFunction) {
-    if (!options.factory || typeof options.factory !== 'function') {
+  private parseObject({ value, options, isEncoding }: IParseFunction) {
+    if (!options.factory) {
       return undefined
     }
 
-    const newModel = toJSON
+    const newModel = isEncoding
       ? Parseus.encode(value, options.factory)
-      : Parseus.decode(value).to(options.factory!)
+      : Parseus.decode(value).to(options.factory)
     return newModel
   }
 }

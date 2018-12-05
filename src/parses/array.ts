@@ -32,14 +32,14 @@ export class ArrayParse<T> extends Parse<T> {
   }
 
   private parseArray(opts: IParseFunction) {
-    const { value, options, toJSON } = opts
+    const { value, options, isEncoding } = opts
     if (!Array.isArray(value)) return []
     const newModel = value.reduce((acc: any[], item: any) => {
       if (typeof item !== 'object') {
         return this.parseSimpleArray(acc, item)(opts)
       }
 
-      const newValue = toJSON
+      const newValue = isEncoding
         ? Parseus.encode(item, options.factory)
         : Parseus.decode(item).to(options.factory!)
       acc.push(newValue)

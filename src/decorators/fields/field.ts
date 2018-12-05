@@ -7,9 +7,7 @@ function getType(reflectType: Function): FieldType {
   if (reflectType === Array) {
     return 'array'
   } else {
-    return typeof reflectType === 'function'
-      ? ((typeof reflectType()).toLowerCase() as FieldType)
-      : 'string'
+    return Boolean(reflectType) ? ((typeof reflectType()).toLowerCase() as FieldType) : 'string'
   }
 }
 
