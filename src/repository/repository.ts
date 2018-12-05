@@ -8,8 +8,8 @@ function getMetadataParse<T>(obj: T): IFieldParse {
 }
 
 export class Parseus<T> {
-  static decode(json: object): ParseusJSON {
-    return new ParseusJSON(json)
+  static decode(json: object): Decoder {
+    return new Decoder(json)
   }
 
   static encode<T>(obj: T, model?: IParameterlessConstructor<T>): { [key: string]: any } {
@@ -25,7 +25,7 @@ export class Parseus<T> {
   constructor(private model: IParameterlessConstructor<T>) {}
 
   decode(json: object): T {
-    return new ParseusJSON(json, this.parser).to(this.model)
+    return new Decoder(json, this.parser).to(this.model)
   }
 
   encode(obj: T): { [key: string]: any } {
@@ -41,7 +41,7 @@ export class Parseus<T> {
   }
 }
 
-class ParseusJSON {
+class Decoder {
   constructor(private json: object, private parserOverride?: ParseFunction) {}
 
   to<T>(model: IParameterlessConstructor<T>): T {
