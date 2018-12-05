@@ -1,6 +1,7 @@
 <h1 align="center">Parseus</h1>
 
 Parseus is a javascript library written in Typescript which allow marshall/unmarshall JSON into class instance. This library is able to run in NodeJS, Typescript or any JS platform.
+[API Docs](https://rijudev.github.io/parseus)
 
 ### Usage Javascript (ESNEXT)
 
