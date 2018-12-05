@@ -30,7 +30,7 @@ const data: any = {
 }
 
 describe(`Parseus[type=number, name=age]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
 
   test('should convert string number to number and read from age2 property as age', () => {
     expect(typeof result.age).toBe('number')

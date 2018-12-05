@@ -30,7 +30,7 @@ const data: any = {
 }
 
 describe(`Parseus[type=array]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
   test(`should convert array's properties`, () => {
     expect(Array.isArray(result.people)).toBeTruthy()
     expect(result.people![0].name).toBe('22')

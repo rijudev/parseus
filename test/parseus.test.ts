@@ -91,8 +91,8 @@ const runWithTimeLog = <T>(fn: () => T, message = ''): T => {
 
 describe(`Parseus[payload]`, () => {
   test('should work using to ', () => {
-    const marshall: Patient = runWithTimeLog(() => Parseus.from(data).to(Patient))
-    const unmarshall: any = runWithTimeLog(() => Parseus.toJSON(marshall))
+    const marshall: Patient = runWithTimeLog(() => Parseus.decode(data).to(Patient))
+    const unmarshall: any = runWithTimeLog(() => Parseus.encode(marshall))
 
     expect(marshall.patientNum).toBe('TEST01')
     expect(unmarshall.patient_patient_num).toBe('TEST01')

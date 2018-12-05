@@ -25,7 +25,7 @@ export class ArrayParse<T> extends Parse<T> {
         })
         value: any
       }
-      const newValue = Parseus.from({ value: item }).to(InnerClasss)
+      const newValue = Parseus.decode({ value: item }).to(InnerClasss)
       acc.push(newValue.value)
       return acc
     }
@@ -40,8 +40,8 @@ export class ArrayParse<T> extends Parse<T> {
       }
 
       const newValue = toJSON
-        ? Parseus.toJSON(item, options.factory)
-        : Parseus.from(item).to(options.factory!)
+        ? Parseus.encode(item, options.factory)
+        : Parseus.decode(item).to(options.factory!)
       acc.push(newValue)
       return acc
     }, [])

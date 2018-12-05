@@ -15,7 +15,7 @@ const data = {
 }
 
 describe(`Parseus[type=decimal]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
   test('should convert string number to decimal fixed 4', () => {
     expect(result.age).toBe(26.1234)
   })

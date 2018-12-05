@@ -11,7 +11,7 @@ class Person {
 const data = { key2: 23 }
 
 describe(`Parseus[type=unique]`, () => {
-  const result = Parseus.from(data).to(Person)
+  const result = Parseus.decode(data).to(Person)
   test('should generate an id', () => {
     expect(typeof result.key).toBe('string')
   })
