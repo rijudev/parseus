@@ -9,10 +9,10 @@
   "files": [
     "dist"
   ],
-  "author": "Richard Sandoval <rsandoval@crestviewc.com>",
+  "author": "Richard Sandoval <rsandovaldev@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/rijudev/parseus"
   },
   "license": "MIT",
   "engines": {
