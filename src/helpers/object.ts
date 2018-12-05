@@ -19,3 +19,17 @@ export function setReadOnly(context: any, propertyName: string) {
     })
   }
 }
+
+export function cloneObject(obj: any) {
+  if (Array.isArray(obj)) {
+    return [...obj]
+  }
+
+  if (typeof obj === 'object') {
+    return {
+      ...obj
+    }
+  }
+
+  return obj
+}
