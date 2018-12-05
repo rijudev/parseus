@@ -48,7 +48,7 @@ export interface IFieldOptions {
   default?: any
 
   /**
-   * Indicates if field's value is ready only
+   * Indicates if field's value is read only
    */
   readOnly?: boolean
 
@@ -60,7 +60,7 @@ export interface IFieldOptions {
 
   /**
    * Specifies a value transformer that is to be used to (un)marshal
-   * this column when (un)marshal.
+   * this field when (un)marshal.
    */
   transformer?: ITransformer
 

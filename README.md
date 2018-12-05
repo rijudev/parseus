@@ -142,11 +142,11 @@ Parseus allow the next field type values:
 | type        | Field type. Must be one of the values from the FieldType                                                               | string       | 'string' |
 | name        | Key name in source object. if this value is not provided it takes the model field's name wrapped                       | string       | -        |
 | isVirtual   | Indicates if field's value is ignored when marshall Object                                                             | boolean      | false    |
-| default     | Indicates the initial field's value                                                                                    | any          |          |
+| default     | Indicates the initial field's value                                                                                    | any          | -        |
 | readOnly    | Indicates if field's value is read only (freeze)                                                                       | boolean      | false    |
 | fixed       | The scale for a decimal (exact numeric) field, which represents the number of digits to the right of the decimal point | number       | 6        |
-| transformer | Specifies a value transformer that is to be used to (un)marshall the current field when (un)marshall                   | ITransformer |          |
-| factory     | Indicates the field's model class of target                                                                            | class        |          |
+| transformer | Specifies a value transformer that is to be used to (un)marshall the current field when (un)marshall                   | ITransformer | -        |
+| factory     | Indicates the field's model class of target                                                                            | class        | -        |
 
 
 Still in progress...
