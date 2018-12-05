@@ -44,7 +44,7 @@ export abstract class Parse<T> {
     this.model[name] = value
   }
 
-  marshal(obj: any): object {
+  marshall(obj: any): object {
     const setObj = (name: string, value: any) => (obj[name] = value)
 
     Object.keys(this.fields).forEach(key => {
