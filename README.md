@@ -119,7 +119,8 @@ person.name = 'Sara'
  **/
 const personMarshalled = Parseus.toJSON(person, Person)
 ```
-##Instalation
+
+<h2>Instalation</h2>
 
 1. Install the npm package:
 
