@@ -47,6 +47,6 @@ class ParseusJSON {
   to<T>(model: IParameterlessConstructor<T>): T {
     const obj = new model()
     const metadata = getMetadataParse(obj)
-    return parseFactory(obj, metadata, this.json, this.parserOverride) as T
+    return parseFactory(obj, metadata, this.json, this.parserOverride)
   }
 }
