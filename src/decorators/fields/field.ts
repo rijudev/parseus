@@ -3,6 +3,11 @@ import { PARSEUS_META_KEY } from '../../helpers/constant'
 import { getReflectType, mergeMetadata } from '../../helpers/metadata'
 import { setReadOnly } from '../../helpers/object'
 
+/**
+ * Returns the proper FieldType value from the Constructor class
+ * @param {Function} reflectType
+ * @returns {FieldType}
+ */
 function getType(reflectType: Function): FieldType {
   if (reflectType === Array) {
     return 'array'
@@ -11,6 +16,11 @@ function getType(reflectType: Function): FieldType {
   }
 }
 
+/**
+ * Field decorator is used to mark a specific class property as a decoded object field.
+ * Only properties decorated with this decorator will be persisted after encode and decode
+ * @param {IFieldOptions} options
+ */
 export function Field(options?: IFieldOptions): Function {
   return function(context: any, propertyName: string, descriptor: TypedPropertyDescriptor<any>) {
     const opts: IFieldOptions = { ...options }

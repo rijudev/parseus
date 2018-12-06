@@ -1,6 +1,9 @@
 import { ITransformer } from './transformer'
 import { IParameterlessConstructor } from '../../utils'
 
+/**
+ * Field Types to encode/decode
+ */
 export type FieldType =
   | 'string'
   | 'number'
@@ -8,8 +11,6 @@ export type FieldType =
   | 'boolean'
   | 'unique'
   | 'date'
-  // | 'date-time'
-  // | 'combine'
   | 'array'
   | 'object'
 

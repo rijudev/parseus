@@ -6,7 +6,14 @@ import { BooleanParse } from './boolean'
 import { ObjectParse } from './object'
 import { ArrayParse } from './array'
 
-function getParseArray<T>(model: T, metadata: IFieldParse, parser: ParseFunction) {
+interface IParseParams<T> {
+  model: T
+  metadata: IFieldParse
+  parser: ParseFunction
+  data?: object
+}
+
+function getParseArray<T>({ model, metadata, parser }: IParseParams<T>) {
   return [
     new StringParse(model, metadata, parser),
     new NumberParse(model, metadata, parser),
@@ -17,16 +24,10 @@ function getParseArray<T>(model: T, metadata: IFieldParse, parser: ParseFunction
   ]
 }
 
-export function parseFactory<T>(
-  model: T,
-  metadata: IFieldParse,
-  data: object,
-  parser?: ParseFunction
-): T {
-  return getParseArray(model, metadata, parser!).reduce<T>((_, parser) => parser.parse(data), model)
+export function parseFactory<T>(params: IParseParams<T>): T {
+  return getParseArray(params).reduce<T>((_, parser) => parser.parse(params.data!), params.model)
 }
 
-export function mashallFactory<T>(model: T, metadata: IFieldParse, parser?: ParseFunction): object {
-  const obj = {}
-  return getParseArray(model, metadata, parser!).reduce((_, parser) => parser.marshall(obj), obj)
+export function mashallFactory<T>(params: IParseParams<T>): { [key: string]: any } {
+  return getParseArray(params).reduce((acc, parser) => parser.marshall(acc), {})
 }
