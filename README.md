@@ -125,7 +125,7 @@ const personMarshalled = Parseus.encode(person, Person)
 
 1. Install the npm package:
 
-   `npm install parseus --save` or using yarn `yarn add parseus`
+   `npm install parseus --save` or using yarn `yarn add @rijudev/parseus`
 
 2. You need to install `reflect-metadata` shim:
 
