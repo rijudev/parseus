@@ -1,4 +1,4 @@
-import Parseus, { Field } from '../src/parseus'
+import Parseus, { Field } from '../src'
 
 class Person {
   @Field({ isVirtual: true, name: 'age_1' })

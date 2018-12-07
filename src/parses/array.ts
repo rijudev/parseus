@@ -1,8 +1,8 @@
 import { Parse } from './parse'
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
-import Parseus from '../parseus'
 import { Field } from '../decorators/fields/field'
 import { FieldType } from '../decorators/options/field-options'
+import { Parseus } from '../repository/repository'
 
 export class ArrayParse<T> extends Parse<T> {
   constructor(model: T, metadata: IFieldParse, parser?: ParseFunction) {
