@@ -1,11 +1,9 @@
 {
   "name": "@rijudev/parseus",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
-  "main": "dist/parseus.umd.js",
-  "module": "dist/parseus.es5.js",
-  "typings": "dist/types/parseus.d.ts",
+  "main": "dist/lib/src/parseus",
   "files": [
     "dist"
   ],
