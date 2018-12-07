@@ -1,4 +1,4 @@
-import Parseus, { Field } from '../src'
+import Parseus, { Field } from '../src/parseus'
 
 class Obj {
   @Field({ name: 'incoming' })

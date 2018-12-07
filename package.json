@@ -4,8 +4,8 @@
   "description": "",
   "keywords": [],
   "main": "dist/parseus.umd.js",
-  "module": "dist/lib/src/index.js",
-  "typings": "dist/types/index.d.ts",
+  "module": "dist/parseus.es5.js",
+  "typings": "dist/types/parseus.d.ts",
   "files": [
     "dist"
   ],
