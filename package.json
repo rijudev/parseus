@@ -1,9 +1,10 @@
 {
   "name": "@rijudev/parseus",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "main": "dist/lib/src/parseus",
+  "module": "dist/parseus.es5.js",
   "files": [
     "dist"
   ],

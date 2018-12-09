@@ -1,6 +1,6 @@
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { Parse } from './parse'
-import Parseus from '../parseus'
+import { Parseus } from '../repository/repository'
 
 export class ObjectParse<T> extends Parse<T> {
   constructor(model: T, metadata: IFieldParse, parser: ParseFunction) {
