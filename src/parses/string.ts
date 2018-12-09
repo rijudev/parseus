@@ -1,4 +1,4 @@
-import v1 from 'uuid/v1'
+const v1 = require('uuid/v1')
 
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { Parse } from './parse'
