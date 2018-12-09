@@ -1,4 +1,4 @@
-import * as uuid from 'uuid'
+import v1 from 'uuid/v1'
 
 import { IFieldParse, ParseFunction, IParseFunction } from '../utils'
 import { Parse } from './parse'
@@ -17,7 +17,7 @@ export class StringParse<T> extends Parse<T> {
   }
 
   private parseUnique({ key, value, destination }: IParseFunction): string {
-    return value || uuid.v1()
+    return value || v1()
   }
 
   private parseString({ key, value, destination }: IParseFunction): string | undefined {
