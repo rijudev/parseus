@@ -1,4 +1,5 @@
-import { METADATA_DESING_TYPE } from './constant'
+import { METADATA_DESING_TYPE, PARSEUS_META_KEY } from './constant'
+import { IParameterlessConstructor } from '../utils'
 
 export function getMetadata(metaKey: string, context: any, propertyName?: string): any {
   const reflect: any = Reflect
@@ -25,3 +26,10 @@ export function mergeMetadata(metaKey: string, value: any, context: any, propert
   }
   defineMetadata(metaKey, newMetadata, context)
 }
+
+export function getFieldsFromModel<T>(
+  model: IParameterlessConstructor<T>
+): [keyof T] {
+ return getMetadata(PARSEUS_META_KEY, new model());
+}
+
