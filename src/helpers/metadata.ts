@@ -1,4 +1,5 @@
 import { METADATA_DESING_TYPE, PARSEUS_META_KEY } from './constant'
+import { IFieldOptions } from '../decorators/options/field-options'
 import { IParameterlessConstructor } from '../utils'
 
 export function getMetadata(metaKey: string, context: any, propertyName?: string): any {
@@ -29,7 +30,6 @@ export function mergeMetadata(metaKey: string, value: any, context: any, propert
 
 export function getFieldsFromModel<T>(
   model: IParameterlessConstructor<T>
-): [keyof T] {
- return getMetadata(PARSEUS_META_KEY, new model());
+): { [P in keyof T]: IFieldOptions } {
+  return getMetadata(PARSEUS_META_KEY, new model())
 }
-
